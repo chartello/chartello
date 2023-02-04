@@ -7,7 +7,7 @@
         <div class="flex flex-col items-center justify-center container mx-auto items-end pt-12 pb-12 px-6 md:flex-row">
             <div class="flex items-center justify-center text-xl text-white mb-6 md:mr-auto md:mb-0">
                 <div class="bg-pink-600 h-8 w-8 rounded mr-4 p-2">
-                    <img src="/vendor/chartello/img/logo.png" alt="Chartello"/>
+                    <Logo class="w-4 h-4"/>
                 </div>
 
                 <h1 class="leading-tight">
@@ -96,6 +96,7 @@ import {ref, watch} from 'vue'
 import 'v-calendar/dist/style.css'
 import Modal from '../../Components/HelpModal.vue'
 import {PlusIcon, CalendarIcon, MenuIcon, ArrowRightIcon} from 'vue-tabler-icons'
+import Logo from "../../Components/Logo.vue";
 
 const props = defineProps([
     'dashboard',
