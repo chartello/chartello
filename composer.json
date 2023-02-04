@@ -1,0 +1,26 @@
+{
+    "name": "chartello/lite",
+    "autoload": {
+        "psr-4": {
+            "Chartello\\Lite\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matt Daneshvar",
+            "email": "matt.daneshvar@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "inertiajs/inertia-laravel": "^0.6.9",
+        "illuminate/database": "^9.50",
+        "illuminate/support": "^9.50"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chartello\\Lite\\ChartelloServiceProvider"
+            ]
+        }
+    }
+}
