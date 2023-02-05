@@ -16,9 +16,14 @@ return new class extends Migration
         Schema::create('chartello_panels', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->foreignId('dashboard_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('dashboard_id');
             $table->json('settings')->nullable();
             $table->timestamps();
+
+            $table->foreign('dashboard_id')
+                ->references('id')
+                ->on('chartello_dashboards')
+                ->cascadeOnDelete();
         });
     }
 
