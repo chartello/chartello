@@ -3,5 +3,8 @@
 return [
     'path' => env('CHARTELLO_PATH', 'chartello'),
 
-    'middleware' => ['web'],
+    'middleware' => [
+        'web',
+        App\Http\Middleware\ProtectChartello::class,
+    ],
 ];

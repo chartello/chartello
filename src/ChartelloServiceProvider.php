@@ -29,5 +29,10 @@ class ChartelloServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../public' => public_path('vendor/chartello'),], ['chartello-assets']);
 
         $this->publishes([__DIR__.'/../config/chartello.php' => config_path('chartello.php'),], 'chartello-config');
+
+        $this->publishes(
+            [__DIR__.'/../stubs/ProtectChartello.stub' => app_path('Http/Middleware/ProtectChartello.php'),],
+            'chartello-middleware'
+        );
     }
 }
