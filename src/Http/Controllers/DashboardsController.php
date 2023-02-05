@@ -48,7 +48,6 @@ class DashboardsController
             'start' => $start,
             'end' => $end,
         ]);
-
     }
 
     public function store()

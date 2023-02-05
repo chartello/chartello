@@ -27,7 +27,7 @@ class TrendAggregator
 
         for ($i = new Carbon($this->start); $i->lt($this->end); $i->addDay()) {
             $date = $i->format('Y-m-d');
-            $result = $results->first(fn($result) => $result->x === $date);
+            $result = $results->first(fn ($result) => $result->x === $date);
 
             $output[] = [
                 'x' => $date,
@@ -40,15 +40,15 @@ class TrendAggregator
 
     protected function validate($data)
     {
-        if (!$data->count()) {
+        if (! $data->count()) {
             return;
         }
 
-        if (!data_get($data->first(), 'x')) {
+        if (! data_get($data->first(), 'x')) {
             throw new Exception('Could not find column x.');
         }
 
-        if (!data_get($data->first(), 'y')) {
+        if (! data_get($data->first(), 'y')) {
             throw new Exception('Could not find column y.');
         }
     }

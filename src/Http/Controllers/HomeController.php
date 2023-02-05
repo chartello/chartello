@@ -10,7 +10,7 @@ class HomeController
     {
         $dashboard = Dashboard::first();
 
-        if (!$dashboard) {
+        if (! $dashboard) {
             $dashboard = $this->initiate();
         }
 

@@ -17,7 +17,7 @@ class Panel extends Model
     protected function aggregate(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => collect($this->data)->sum('y'),
+            get: fn ($value) => collect($this->data)->sum('y'),
         );
     }
 }
