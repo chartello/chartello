@@ -10,13 +10,13 @@ class ChartelloServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Route::name('chartello.')->group([
-            'prefix' => config('chartello.path', ''),
-            'namespace' => 'Chartello\Lite\Http\Controllers',
-            'middleware' => config('chartello.middleware', 'web'),
-        ], function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
+        Route::middleware(config('chartello.middleware'))
+            ->prefix(config('chartello.path'))
+            ->name('chartello.')
+            ->namespace('Chartello\Lite\Http\Controllers')
+            ->group(function () {
+                $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+            });
 
         $this->commands([InstallCommand::class]);
 
