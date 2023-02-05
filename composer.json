@@ -1,27 +1,27 @@
 {
-    "name": "chartello/poc",
-    "autoload": {
-        "psr-4": {
-            "Chartello\\Lite\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Matt Daneshvar",
-            "email": "matt.daneshvar@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "inertiajs/inertia-laravel": "^0.6.9",
-        "illuminate/database": "^9.50",
-        "illuminate/support": "^9.50",
-        "laravel/pint": "^1.4"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Chartello\\Lite\\ChartelloServiceProvider"
-            ]
-        }
+  "name": "chartello/poc",
+  "autoload": {
+    "psr-4": {
+      "Chartello\\Lite\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Matt Daneshvar",
+      "email": "matt.daneshvar@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "inertiajs/inertia-laravel": "^0.6.9",
+    "illuminate/database": "^9.50",
+    "illuminate/support": "^9.50",
+    "laravel/pint": "^1.4"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Chartello\\Lite\\ChartelloServiceProvider"
+      ]
+    }
+  }
 }

@@ -1,84 +1,86 @@
 <template>
-    <div ref="canvas"></div>
+  <div ref="canvas"></div>
 </template>
 
 <script setup>
-import {onMounted, ref, watch} from 'vue'
-import ApexCharts from 'apexcharts'
+import { onMounted, ref, watch } from "vue";
+import ApexCharts from "apexcharts";
 
-const props = defineProps(['title', 'data'])
+const props = defineProps(["title", "data"]);
 
-const canvas = ref(null)
+const canvas = ref(null);
 
-const chart = ref(null)
+const chart = ref(null);
 
 const options = {
-    chart: {
-        type: 'area',
-        height: 250,
-        toolbar: {
-            show: false,
-        },
+  chart: {
+    type: "area",
+    height: 250,
+    toolbar: {
+      show: false,
     },
-    series: [
-        {
-            name: 'Rows',
-            data: [],
-        },
-    ],
-    xaxis: {
-        type: 'datetime',
-        labels: {
-            style: {
-                colors: '#b7b7b7',
-            },
-        },
+  },
+  series: [
+    {
+      name: "Rows",
+      data: [],
     },
+  ],
+  xaxis: {
+    type: "datetime",
+    labels: {
+      style: {
+        colors: "#b7b7b7",
+      },
+    },
+  },
+  yaxis: {
+    labels: {
+      style: {
+        colors: "#b7b7b7",
+      },
+    },
+  },
+  stroke: {
+    curve: "smooth",
+  },
+  grid: {
     yaxis: {
-        labels: {
-            style: {
-                colors: '#b7b7b7',
-            },
-        },
+      lines: {
+        show: false,
+      },
     },
-    stroke: {
-        curve: 'smooth',
+  },
+  dataLabels: {
+    enabled: false,
+    style: {
+      colors: ["#333"],
     },
-    grid: {
-        yaxis: {
-            lines: {
-                show: false,
-            },
-        },
-    },
-    dataLabels: {
-        enabled: false,
-        style: {
-            colors: ['#333'],
-        },
-        offsetX: 30,
-    },
-}
+    offsetX: 30,
+  },
+};
 
 function draw() {
-    if (chart.value) {
-        chart.value.updateSeries([
-            {
-                name: props.title ?  props.title : 'Rows',
-                data: props.data,
-            },
-        ])
-    }
+  if (chart.value) {
+    chart.value.updateSeries([
+      {
+        name: props.title ? props.title : "Rows",
+        data: props.data,
+      },
+    ]);
+  }
 }
 
 onMounted(() => {
-    chart.value = new ApexCharts(canvas.value, options)
-    chart.value.render()
-    draw()
-})
+  chart.value = new ApexCharts(canvas.value, options);
+  chart.value.render();
+  draw();
+});
 
-watch(() => [props.data, props.title], () => {
-    draw()
-})
-
+watch(
+  () => [props.data, props.title],
+  () => {
+    draw();
+  }
+);
 </script>

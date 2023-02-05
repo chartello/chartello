@@ -1,5 +1,7 @@
 <template>
-    <button class="flex-inline w-[1.5rem] h-[1.5rem] min-w-[1.5rem] min-h-[1.5rem] p-1 cursor-pointer rounded transition">
-        <slot/>
-    </button>
+  <button
+    class="flex-inline h-[1.5rem] min-h-[1.5rem] w-[1.5rem] min-w-[1.5rem] cursor-pointer rounded p-1 transition"
+  >
+    <slot />
+  </button>
 </template>
