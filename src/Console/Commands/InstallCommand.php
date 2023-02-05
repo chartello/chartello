@@ -28,7 +28,7 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->comment('Publishing Chartello Assets...');
-        $this->callSilent('vendor:publish', ['--tag' => 'chartello-assets']);
+        $this->callSilent('vendor:publish', ['--tag' => 'chartello-assets', '--force']);
 
         $this->comment('Publishing Chartello Configuration...');
         $this->callSilent('vendor:publish', ['--tag' => 'chartello-config']);
