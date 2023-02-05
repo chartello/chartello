@@ -1,5 +1,5 @@
 {
-    "name": "chartello/lite",
+    "name": "chartello/poc",
     "autoload": {
         "psr-4": {
             "Chartello\\Lite\\": "src/"
