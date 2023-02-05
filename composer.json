@@ -12,7 +12,6 @@
     }
   ],
   "require-dev": {
-    "inertiajs/inertia-laravel": "^0.6.9",
     "illuminate/database": "^9.50",
     "illuminate/support": "^9.50",
     "laravel/pint": "^1.4"
@@ -23,5 +22,8 @@
         "Chartello\\Lite\\ChartelloServiceProvider"
       ]
     }
+  },
+  "require": {
+    "inertiajs/inertia-laravel": "^0.6.9"
   }
 }
