@@ -14,7 +14,7 @@ class HomeController
             $dashboard = $this->initiate();
         }
 
-        return redirect()->route('dashboards.show', $dashboard);
+        return redirect()->route('chartello.dashboards.show', $dashboard);
     }
 
     protected function initiate()

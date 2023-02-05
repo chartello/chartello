@@ -57,7 +57,7 @@ class DashboardsController
 
         $dashboard->panels()->create();
 
-        return redirect()->route('dashboards.show', $dashboard);
+        return redirect()->route('chartello.dashboards.show', $dashboard);
     }
 
     public function update(Dashboard $dashboard)
@@ -73,6 +73,6 @@ class DashboardsController
 
         $dashboard->delete();
 
-        return redirect()->route('dashboards.show', $previous ?? Dashboard::first());
+        return redirect()->route('chartello.dashboards.show', $previous ?? Dashboard::first());
     }
 }

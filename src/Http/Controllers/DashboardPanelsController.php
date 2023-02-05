@@ -10,7 +10,7 @@ class DashboardPanelsController
     {
         $panel = $dashboard->panels()->create();
 
-        return redirect()->route('dashboards.show', [
+        return redirect()->route('chartello.dashboards.show', [
             'dashboard' => $dashboard,
             'edit' => $panel,
         ]);
