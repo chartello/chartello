@@ -3,10 +3,7 @@ import { createInertiaApp } from "@inertiajs/vue3";
 import { SetupCalendar } from "v-calendar";
 
 createInertiaApp({
-  resolve: (name) => {
-    const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
-    return pages[`./Pages/${name}.vue`];
-  },
+  resolve: (name) => require(`./Pages/${name}`),
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
