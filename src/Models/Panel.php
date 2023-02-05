@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Panel extends Model
 {
+    protected $table = 'chartello_panels';
+
     protected $casts = [
         'settings' => 'array',
     ];
@@ -15,7 +17,7 @@ class Panel extends Model
     protected function aggregate(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => collect($this->data)->sum('y'),
+            get: fn($value) => collect($this->data)->sum('y'),
         );
     }
 }

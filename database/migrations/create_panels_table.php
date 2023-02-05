@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('panels', function (Blueprint $table) {
+        Schema::create('chartello_panels', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->foreignId('dashboard_id')->constrained()->cascadeOnDelete();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('panels');
+        Schema::dropIfExists('chartello_panels');
     }
 };
