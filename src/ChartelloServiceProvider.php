@@ -10,9 +10,8 @@ class ChartelloServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Route::group([
+        Route::name('chartello.')->group([
             'prefix' => config('chartello.path', ''),
-						'name' => 'chartello.',
             'namespace' => 'Chartello\Lite\Http\Controllers',
             'middleware' => config('chartello.middleware', 'web'),
         ], function () {
