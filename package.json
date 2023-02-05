@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npx mix watch",
+    "dev": "npx mix watch --hot",
     "build": "npx mix"
   },
   "devDependencies": {
