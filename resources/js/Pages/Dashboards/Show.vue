@@ -11,7 +11,7 @@
         :href="`/${$page.props.path}`"
         class="mb-6 flex items-center justify-center text-xl text-white md:mr-auto md:mb-0"
       >
-        <div class="mr-4 h-8 w-8 rounded bg-pink-600 p-2">
+        <div class="mr-3 h-8 w-8 rounded bg-pink-600 p-2">
           <Logo class="h-4 w-4" />
         </div>
 
