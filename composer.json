@@ -12,8 +12,6 @@
     }
   ],
   "require-dev": {
-    "illuminate/database": "^9.50",
-    "illuminate/support": "^9.50",
     "laravel/pint": "^1.4"
   },
   "extra": {
