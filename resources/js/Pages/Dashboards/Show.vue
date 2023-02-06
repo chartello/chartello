@@ -7,7 +7,8 @@
     <div
       class="container mx-auto flex flex-col items-end items-center justify-center px-6 pt-12 pb-12 md:flex-row"
     >
-      <div
+      <Link
+        :href="`/${$page.props.path}`"
         class="mb-6 flex items-center justify-center text-xl text-white md:mr-auto md:mb-0"
       >
         <div class="mr-4 h-8 w-8 rounded bg-pink-600 p-2">
@@ -17,7 +18,7 @@
         <h1 class="leading-tight">
           <strong>Chartello</strong>
         </h1>
-      </div>
+      </Link>
 
       <DatePicker
         v-model="range"
@@ -107,9 +108,9 @@
 </template>
 
 <script setup>
-import { Head, router, usePage } from "@inertiajs/vue3";
+import { Head, router, usePage, Link } from "@inertiajs/vue3";
 import Card from "../../Components/Panels/Card.vue";
-import DashboardLink from "../../Components/Dashboards/Link.vue";
+import DashboardLink from "../../Components/Dashboards/NavLink.vue";
 import { DatePicker } from "v-calendar";
 import { ref, watch } from "vue";
 import "v-calendar/dist/style.css";
@@ -121,6 +122,7 @@ import {
   ArrowRightIcon,
 } from "vue-tabler-icons";
 import Logo from "../../Components/Logo.vue";
+import NavLink from "../../Components/Dashboards/NavLink.vue";
 
 const props = defineProps(["dashboard", "links", "start", "end"]);
 
