@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import DashboardLink from "./Dashboards/NavLink.vue";
+import DashboardLink from "./NavLink.vue";
 import { ArrowRightIcon } from "vue-tabler-icons";
 import { store } from "../store";
 import ButtonAdd from "./ButtonAdd.vue";

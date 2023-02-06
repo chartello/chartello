@@ -5,13 +5,12 @@
     :class="{ 'bg-blue-100': active, ' hover:bg-gray-100': !active }"
     @submit.prevent="update"
   >
-    <input
+    <InlineInput
       v-if="editing"
-      type="text"
       v-model="form.name"
       ref="input"
       placeholder="Untitled"
-      class="w-full flex-1 border-0 bg-transparent p-0 py-2 underline decoration-gray-200 underline-offset-4 focus:decoration-blue-200 focus:ring-0"
+      class="w-full flex-1 py-2"
     />
     <Link
       v-else
@@ -51,8 +50,9 @@
 import { Link, useForm, usePage } from "@inertiajs/vue3";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
 import { computed, onMounted, ref, watch } from "vue";
-import Spinner from "../Spinner.vue";
-import IconButton from "../IconButton.vue";
+import Spinner from "./Spinner.vue";
+import IconButton from "./IconButton.vue";
+import InlineInput from "./InlineInput.vue";
 
 const props = defineProps(["dashboard"]);
 

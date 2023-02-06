@@ -6,13 +6,12 @@
   >
     <div class="mt-2 mb-6 flex px-4 text-gray-600">
       <div class="flex-1">
-        <input
+        <InlineInput
           v-if="editing"
           ref="nameInput"
-          type="text"
           v-model="form.name"
           placeholder="Untitled"
-          class="w-full border-0 p-0 underline decoration-gray-200 underline-offset-4 focus:decoration-blue-200 focus:ring-0"
+          class="w-full"
         />
         <div v-else-if="form.name" v-text="form.name" />
 
@@ -67,13 +66,14 @@
 </template>
 
 <script setup>
-import TrendChart from "./TrendChart.vue";
-import Editor from "./Editor.vue";
 import { ref } from "vue";
 import { useForm, usePage } from "@inertiajs/vue3";
-import Spinner from "../Spinner.vue";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
-import IconButton from "../IconButton.vue";
+import IconButton from "./IconButton.vue";
+import TrendChart from "./TrendChart.vue";
+import Editor from "./Editor.vue";
+import Spinner from "./Spinner.vue";
+import InlineInput from "./InlineInput.vue";
 
 const props = defineProps(["panel"]);
 
@@ -92,7 +92,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-if (params.edit == props.panel.id) {
+if (params.edit === parseInt(props.panel.id)) {
   edit();
 }
 

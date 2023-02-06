@@ -7,21 +7,19 @@
     <DatePicker :start="start" :end="end" />
   </Header>
 
-  <div class="container mx-auto -mt-2 pb-32">
-    <div class="lg:flex">
-      <Sidebar
-        :links="links"
-        :show="showSidebar"
-        @toggle="showSidebar = !showSidebar"
-      />
+  <div class="container mx-auto -mt-2 pb-32 lg:flex">
+    <Sidebar
+      :links="links"
+      :show="showSidebar"
+      @toggle="showSidebar = !showSidebar"
+    />
 
-      <Panels
-        :dashboard="dashboard"
-        class="flex-1 transition-all duration-500 lg:left-0"
-        :class="{ 'left-0': !showSidebar, 'left-[19rem]': showSidebar }"
-        @click="showSidebar = false"
-      />
-    </div>
+    <Panels
+      :dashboard="dashboard"
+      class="flex-1 transition-all duration-500 lg:left-0"
+      :class="{ 'left-0': !showSidebar, 'left-[19rem]': showSidebar }"
+      @click="showSidebar = false"
+    />
   </div>
 
   <Modal />

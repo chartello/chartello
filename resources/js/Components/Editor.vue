@@ -19,13 +19,13 @@
 </template>
 
 <script setup>
-import { CodeJar } from "codejar";
-import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
 import { onMounted, ref } from "vue";
+import { CodeJar } from "codejar";
+import hljs from "highlight.js";
 import { InfoCircleIcon } from "vue-tabler-icons";
-import { store } from "../../store";
-import IconButton from "../IconButton.vue";
+import { store } from "../store";
+import IconButton from "./IconButton.vue";
 
 const props = defineProps(["modelValue", "autofocus"]);
 

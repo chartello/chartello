@@ -1,6 +1,6 @@
 <template>
   <div class="relative px-4 lg:px-0">
-    <Card v-for="panel in dashboard.panels" :key="panel.id" :panel="panel" />
+    <Panel v-for="panel in dashboard.panels" :key="panel.id" :panel="panel" />
 
     <ButtonAdd
       @click="store.panels.create(dashboard)"
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import Card from "./Panels/Card.vue";
+import Panel from "./Panel.vue";
 import { store } from "../store";
 import ButtonAdd from "./ButtonAdd.vue";
 
