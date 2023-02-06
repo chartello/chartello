@@ -5,6 +5,7 @@ return [
 
     'middleware' => [
         'web',
+        Chartello\Lite\Http\Middleware\HandleInertiaRequests::class,
         App\Http\Middleware\ProtectChartello::class,
     ],
 ];
