@@ -8,8 +8,6 @@ class PanelsController
 {
     public function update(Panel $panel)
     {
-        usleep(300 * 1000);
-
         $panel->update([
             'name' => request('name'),
             'settings' => [
@@ -22,8 +20,6 @@ class PanelsController
 
     public function destroy(Panel $panel)
     {
-        usleep(300 * 1000);
-
         $panel->delete();
 
         return back();
