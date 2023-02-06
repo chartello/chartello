@@ -71,7 +71,7 @@
         </button>
 
         <div
-          class="fixed bottom-0 left-0 cursor-pointer rounded-tr bg-blue-100 p-5 text-blue-500 transition hover:bg-blue-200 lg:hidden"
+          class="fixed bottom-0 left-0 z-10 cursor-pointer rounded-tr bg-blue-100 p-5 text-blue-500 transition hover:bg-blue-200 lg:hidden"
           @click="showLinks = !showLinks"
         >
           <ArrowRightIcon
