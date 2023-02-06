@@ -15,13 +15,19 @@ class ProtectChartello
      */
     public function handle($request, $next)
     {
-        if (!$this->authorize($request)) {
+        if (! $this->authorize($request)) {
             abort(404);
         }
 
         return $next($request);
     }
 
+    /**
+     * Define the authorization logic for accessing Chartello.
+     *
+     * @param $request
+     * @return bool
+     */
     protected function authorize($request)
     {
         if (App::environment('local')) {
