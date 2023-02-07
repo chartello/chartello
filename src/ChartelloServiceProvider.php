@@ -10,6 +10,16 @@ class ChartelloServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->registerConfig();
+        $this->registerRoutes();
+        $this->registerViews();
+        $this->registerMigrations();
+        $this->registerPublishing();
+        $this->registerCommands();
+    }
+
+    protected function registerRoutes()
+    {
         Route::middleware(config('chartello.middleware'))
             ->prefix(config('chartello.path'))
             ->name('chartello.')
@@ -17,15 +27,25 @@ class ChartelloServiceProvider extends ServiceProvider
             ->group(function () {
                 $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
             });
+    }
 
-        $this->commands([InstallCommand::class]);
-
+    protected function registerMigrations()
+    {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+    }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'chartello');
-
+    protected function registerConfig()
+    {
         $this->mergeConfigFrom(__DIR__.'/../config/chartello.php', 'chartello');
+    }
 
+    protected function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'chartello');
+    }
+
+    protected function registerPublishing()
+    {
         $this->publishes([__DIR__.'/../public' => public_path('vendor/chartello')], ['chartello-assets']);
 
         $this->publishes([__DIR__.'/../config/chartello.php' => config_path('chartello.php')], 'chartello-config');
@@ -34,5 +54,10 @@ class ChartelloServiceProvider extends ServiceProvider
             [__DIR__.'/../stubs/ProtectChartello.stub' => app_path('Http/Middleware/ProtectChartello.php')],
             'chartello-middleware'
         );
+    }
+
+    protected function registerCommands()
+    {
+        $this->commands([InstallCommand::class]);
     }
 }
