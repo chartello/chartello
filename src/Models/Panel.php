@@ -3,6 +3,7 @@
 namespace Chartello\Lite\Models;
 
 use Chartello\Lite\Aggregators\TrendAggregator;
+use Chartello\Lite\Database\Factories\PanelFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Throwable;
 
@@ -41,5 +42,10 @@ class Panel extends Model
             $this->data = [];
             $this->error = $exception->getMessage();
         }
+    }
+
+    protected static function newFactory()
+    {
+        return new PanelFactory();
     }
 }

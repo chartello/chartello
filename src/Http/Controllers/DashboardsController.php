@@ -47,7 +47,8 @@ class DashboardsController
 
         $dashboard->delete();
 
-        return redirect()->route('chartello.dashboards.show', $previous ?? Dashboard::first());
+        return $previous ? redirect()->route('chartello.dashboards.show', $previous)
+            : redirect()->route('chartello.home');
     }
 
     protected function resolveRenage()

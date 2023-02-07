@@ -3,6 +3,7 @@
 namespace Chartello\Lite\Http\Controllers;
 
 use Chartello\Lite\Models\Dashboard;
+use Chartello\Lite\Models\Panel;
 
 class HomeController
 {
@@ -19,19 +20,9 @@ class HomeController
 
     protected function initiate()
     {
-        $overview = Dashboard::create(['name' => 'Overview']);
-
-        $overview->panels()->create([
-            'name' => 'Users',
-            'settings' => [
-                'query' => 'SELECT COUNT(*) AS y,
-DATE(created_at) AS x
-FROM users
-WHERE created_at BETWEEN @start AND @end
-GROUP BY x
-ORDER BY x ASC',
-            ],
-        ]);
+        $overview = Dashboard::factory()
+            ->has(Panel::factory(1, ['name' => 'Users']))
+            ->create(['name' => 'Overview']);
 
         return $overview;
     }

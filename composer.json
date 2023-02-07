@@ -2,7 +2,8 @@
   "name": "chartello/poc",
   "autoload": {
     "psr-4": {
-      "Chartello\\Lite\\": "src/"
+      "Chartello\\Lite\\": "src/",
+      "Chartello\\Lite\\Database\\Factories\\": "database/factories"
     }
   },
   "authors": [
