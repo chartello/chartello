@@ -2,7 +2,9 @@
 
 namespace Chartello\Lite\Models;
 
+use Chartello\Lite\Aggregators\TrendAggregator;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Throwable;
 
 class Panel extends Model
 {
@@ -19,5 +21,25 @@ class Panel extends Model
         return Attribute::make(
             get: fn ($value) => collect($this->data)->sum('y'),
         );
+    }
+
+    public function populate($start, $end)
+    {
+        $query = data_get($this, 'settings.query');
+
+        if (! $query) {
+            $this->data = [];
+
+            return;
+        }
+
+        $aggregator = new TrendAggregator($query, $start, $end);
+
+        try {
+            $this->data = $aggregator->get();
+        } catch (Throwable $exception) {
+            $this->data = [];
+            $this->error = $exception->getMessage();
+        }
     }
 }

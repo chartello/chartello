@@ -9,7 +9,7 @@
 
   <div class="container mx-auto -mt-2 pb-32 lg:flex">
     <Sidebar
-      :links="links"
+      :dashboards="dashboards"
       :show="showSidebar"
       @toggle="showSidebar = !showSidebar"
     />
@@ -35,7 +35,7 @@ import Sidebar from "../../Components/Sidebar.vue";
 import DatePicker from "../../Components/DatePicker.vue";
 import Panels from "../../Components/Panels.vue";
 
-defineProps(["dashboard", "links", "start", "end"]);
+defineProps(["dashboard", "dashboards", "start", "end"]);
 
 const showSidebar = ref(false);
 </script>

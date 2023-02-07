@@ -6,7 +6,11 @@
       'left-[1.5rem] md:left-[calc(50%-22.5rem)]': show,
     }"
   >
-    <DashboardLink v-for="link in links" :key="link.id" :dashboard="link" />
+    <NavLink
+      v-for="dashboard in dashboards"
+      :key="dashboard.id"
+      :dashboard="dashboard"
+    />
 
     <ButtonAdd @click="store.dashboards.create()" class="mb-2 w-full">
       Dashboard
@@ -25,13 +29,13 @@
 </template>
 
 <script setup>
-import DashboardLink from "./NavLink.vue";
+import NavLink from "./NavLink.vue";
 import { ArrowRightIcon } from "vue-tabler-icons";
 import { store } from "../store";
 import ButtonAdd from "./ButtonAdd.vue";
 
 defineProps({
-  links: Array,
+  dashboards: Array,
   show: Boolean,
 });
 
