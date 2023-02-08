@@ -15,8 +15,9 @@
     <Link
       v-else
       class="flex-1 py-2"
-      :href="`/${$page.props.path}/dashboards/${dashboard.id}`"
+      :href="url"
       v-text="form.name ? form.name : 'Untitled'"
+      @click="loading = true"
     />
 
     <template v-if="active">
@@ -43,11 +44,14 @@
         <PencilIcon class="h-4 w-4" />
       </IconButton>
     </template>
+    <template v-else>
+      <Spinner class="text-gray-400" v-if="loading" />
+    </template>
   </form>
 </template>
 
 <script setup>
-import { Link, useForm, usePage } from "@inertiajs/vue3";
+import { Link, router, useForm, usePage } from "@inertiajs/vue3";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import Spinner from "./Spinner.vue";
@@ -58,12 +62,19 @@ const props = defineProps(["dashboard"]);
 
 const editing = ref(false);
 
+const url = computed(() => {
+  return `/${usePage().props.path}/dashboards/${props.dashboard.id}`;
+});
+
 const active = computed(() => {
-  let url = usePage().url;
+  let current = usePage().url;
 
-  url = url.indexOf("?") === -1 ? url : url.substring(0, url.indexOf("?"));
+  current =
+    current.indexOf("?") === -1
+      ? current
+      : current.substring(0, current.indexOf("?"));
 
-  return url === `/${usePage().props.path}/dashboards/${props.dashboard.id}`;
+  return current === url.value;
 });
 
 const form = useForm({
@@ -72,20 +83,22 @@ const form = useForm({
 
 const input = ref(null);
 
+const loading = ref(false);
+
 function edit() {
   editing.value = true;
   setTimeout(() => input.value.focus(), 50);
 }
 
 function update() {
-  form.put(`/${usePage().props.path}/dashboards/${props.dashboard.id}`, {
+  form.put(url.value, {
     preserveScroll: true,
     onSuccess: () => (editing.value = false),
   });
 }
 
 function remove() {
-  form.delete(`/${usePage().props.path}/dashboards/${props.dashboard.id}`, {
+  form.delete(url.value, {
     preserveScroll: true,
   });
 }
@@ -100,5 +113,9 @@ onMounted(() => {
   if (active.value && props.dashboard.name === null) {
     edit();
   }
+});
+
+router.on("start", (event) => {
+  loading.value = event.detail.visit.url.pathname === url.value;
 });
 </script>
