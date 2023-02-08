@@ -1,6 +1,6 @@
 <?php
 
-namespace Chartello\Lite\Models;
+namespace Chartello\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as Eloquent;

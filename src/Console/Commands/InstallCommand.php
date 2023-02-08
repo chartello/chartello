@@ -1,6 +1,6 @@
 <?php
 
-namespace Chartello\Lite\Console\Commands;
+namespace Chartello\Console\Commands;
 
 use Illuminate\Console\Command;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Chartello\Lite\Http\Controllers;
+namespace Chartello\Http\Controllers;
 
-use Chartello\Lite\Models\Dashboard;
+use Chartello\Models\Dashboard;
 use Inertia\Inertia;
 
 class DashboardsController

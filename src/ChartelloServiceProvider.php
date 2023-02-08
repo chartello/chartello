@@ -1,8 +1,8 @@
 <?php
 
-namespace Chartello\Lite;
+namespace Chartello;
 
-use Chartello\Lite\Console\Commands\InstallCommand;
+use Chartello\Console\Commands\InstallCommand;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,7 +23,7 @@ class ChartelloServiceProvider extends ServiceProvider
         Route::middleware(config('chartello.middleware'))
             ->prefix(config('chartello.path'))
             ->name('chartello.')
-            ->namespace('Chartello\Lite\Http\Controllers')
+            ->namespace('Chartello\Http\Controllers')
             ->group(function () {
                 $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
             });

@@ -1,9 +1,9 @@
 {
-  "name": "chartello/poc",
+  "name": "chartello/chartello",
   "autoload": {
     "psr-4": {
-      "Chartello\\Lite\\": "src/",
-      "Chartello\\Lite\\Database\\Factories\\": "database/factories"
+      "Chartello\\": "src/",
+      "Chartello\\Database\\Factories\\": "database/factories"
     }
   },
   "authors": [
@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Chartello\\Lite\\ChartelloServiceProvider"
+        "Chartello\\ChartelloServiceProvider"
       ]
     }
   },

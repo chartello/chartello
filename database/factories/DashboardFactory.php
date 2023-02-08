@@ -1,12 +1,12 @@
 <?php
 
-namespace Chartello\Lite\Database\Factories;
+namespace Chartello\Database\Factories;
 
-use Chartello\Lite\Models\Dashboard;
+use Chartello\Models\Dashboard;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Chartello\Lite\Models\Dashboard>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Chartello\Models\Dashboard>
  */
 class DashboardFactory extends Factory
 {

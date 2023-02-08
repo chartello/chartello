@@ -1,6 +1,6 @@
 <?php
 
-namespace Chartello\Lite\Http\Middleware;
+namespace Chartello\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;

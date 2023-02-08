@@ -1,12 +1,12 @@
 <?php
 
-namespace Chartello\Lite\Database\Factories;
+namespace Chartello\Database\Factories;
 
-use Chartello\Lite\Models\Panel;
+use Chartello\Models\Panel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Chartello\Lite\Models\Panel>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Chartello\Models\Panel>
  */
 class PanelFactory extends Factory
 {

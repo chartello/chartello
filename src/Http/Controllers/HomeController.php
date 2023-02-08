@@ -1,9 +1,9 @@
 <?php
 
-namespace Chartello\Lite\Http\Controllers;
+namespace Chartello\Http\Controllers;
 
-use Chartello\Lite\Models\Dashboard;
-use Chartello\Lite\Models\Panel;
+use Chartello\Models\Dashboard;
+use Chartello\Models\Panel;
 
 class HomeController
 {

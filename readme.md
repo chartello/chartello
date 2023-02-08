@@ -1,7 +1,7 @@
 # Chartello
 
 
-[![GitHub license](https://img.shields.io/github/license/chartello/poc)](https://github.com/chartello/poc/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/chartello/chartello)](https://github.com/chartello/chartello/blob/master/LICENSE.md)
 
 Visualize your Laravel app data in simple dashboards.
 
@@ -9,7 +9,7 @@ Visualize your Laravel app data in simple dashboards.
 
 Add the package to your project via composer:
 ```bash
-composer require chartello/poc
+composer require chartello/chartello
 ```
 
 Publish the package resources:

@@ -1,9 +1,9 @@
 <?php
 
-namespace Chartello\Lite\Models;
+namespace Chartello\Models;
 
-use Chartello\Lite\Aggregators\TrendAggregator;
-use Chartello\Lite\Database\Factories\PanelFactory;
+use Chartello\Aggregators\TrendAggregator;
+use Chartello\Database\Factories\PanelFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Throwable;
 

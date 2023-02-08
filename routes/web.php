@@ -1,9 +1,9 @@
 <?php
 
-use Chartello\Lite\Http\Controllers\DashboardPanelsController;
-use Chartello\Lite\Http\Controllers\DashboardsController;
-use Chartello\Lite\Http\Controllers\HomeController;
-use Chartello\Lite\Http\Controllers\PanelsController;
+use Chartello\Http\Controllers\DashboardPanelsController;
+use Chartello\Http\Controllers\DashboardsController;
+use Chartello\Http\Controllers\HomeController;
+use Chartello\Http\Controllers\PanelsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Chartello\Lite\Aggregators;
+namespace Chartello\Aggregators;
 
 use Exception;
 use Illuminate\Support\Carbon;

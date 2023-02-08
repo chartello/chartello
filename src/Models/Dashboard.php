@@ -1,8 +1,8 @@
 <?php
 
-namespace Chartello\Lite\Models;
+namespace Chartello\Models;
 
-use Chartello\Lite\Database\Factories\DashboardFactory;
+use Chartello\Database\Factories\DashboardFactory;
 
 class Dashboard extends Model
 {
