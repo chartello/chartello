@@ -1,20 +1,26 @@
 {
   "name": "chartello/chartello",
-  "autoload": {
-    "psr-4": {
-      "Chartello\\": "src/",
-      "Chartello\\Database\\Factories\\": "database/factories"
-    }
-  },
+  "description": "Visualize your Laravel app data in simple dashboards.",
+  "keywords": ["laravel", "charts", "dashboards", "visualization"],
+  "license": "MIT",
   "authors": [
     {
       "name": "Matt Daneshvar",
       "email": "matt.daneshvar@gmail.com"
     }
   ],
+  "require": {
+    "inertiajs/inertia-laravel": "^0.6.9"
+  },
   "require-dev": {
     "laravel/pint": "^1.4",
     "orchestra/testbench": "^7.22"
+  },
+  "autoload": {
+    "psr-4": {
+      "Chartello\\": "src/",
+      "Chartello\\Database\\Factories\\": "database/factories"
+    }
   },
   "extra": {
     "laravel": {
@@ -22,8 +28,5 @@
         "Chartello\\ChartelloServiceProvider"
       ]
     }
-  },
-  "require": {
-    "inertiajs/inertia-laravel": "^0.6.9"
   }
 }
