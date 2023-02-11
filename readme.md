@@ -1,6 +1,6 @@
 # Chartello
 
-
+[![tests](https://github.com/chartello/chartello/actions/workflows/tests.yml/badge.svg)](https://github.com/chartello/chartello/actions/workflows/tests.yml)
 [![GitHub license](https://img.shields.io/github/license/chartello/chartello)](https://github.com/chartello/chartello/blob/master/LICENSE.md)
 
 Visualize your Laravel app data in simple dashboards.
