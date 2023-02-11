@@ -3,6 +3,7 @@
 namespace Chartello;
 
 use Chartello\Console\Commands\InstallCommand;
+use Chartello\Console\Commands\TestChartello;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -51,13 +52,18 @@ class ChartelloServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../config/chartello.php' => config_path('chartello.php')], 'chartello-config');
 
         $this->publishes(
-            [__DIR__.'/../stubs/ProtectChartello.stub' => app_path('Http/Middleware/ProtectChartello.php')],
+            [__DIR__.'/../stubs/Middleware/ProtectChartello.php' => app_path('Http/Middleware/ProtectChartello.php')],
             'chartello-middleware'
+        );
+
+        $this->publishes(
+            [__DIR__.'/../stubs/Tests' => base_path('tests/Feature/Chartello/DashboardTest.php')],
+            'chartello-tests'
         );
     }
 
     protected function registerCommands()
     {
-        $this->commands([InstallCommand::class]);
+        $this->commands([InstallCommand::class, TestChartello::class]);
     }
 }

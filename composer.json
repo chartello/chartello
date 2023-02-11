@@ -13,7 +13,8 @@
     }
   ],
   "require-dev": {
-    "laravel/pint": "^1.4"
+    "laravel/pint": "^1.4",
+    "orchestra/testbench": "^7.22"
   },
   "extra": {
     "laravel": {
