@@ -30,4 +30,4 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Run tests
-      run: php artisan chartello:test
+      run: php vendor/bin/testbench chartello:test
