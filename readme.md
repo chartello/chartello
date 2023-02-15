@@ -3,7 +3,13 @@
 [![tests](https://github.com/chartello/chartello/actions/workflows/tests.yml/badge.svg)](https://github.com/chartello/chartello/actions/workflows/tests.yml)
 [![GitHub license](https://img.shields.io/github/license/chartello/chartello)](https://github.com/chartello/chartello/blob/master/LICENSE.md)
 
-Visualize your Laravel app data in simple dashboards.
+Chartello provides a simple UI for visualizing your data in your Laravel-powered app.
+
+<a href="https://demo.chartello.com/">
+    <img width="800" alt="screenshot" src="https://user-images.githubusercontent.com/10030505/219040779-909f08f8-c068-4d30-944a-2f64e92159e2.png">
+</a>
+
+[Demo →](https://demo.chartello.com/)
 
 ## Installation
 
