@@ -31,21 +31,14 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import { router } from "@inertiajs/vue3";
 import { DatePicker } from "v-calendar";
 import { CalendarIcon } from "vue-tabler-icons";
-
-const props = defineProps({
-  start: String,
-  end: String,
-});
+import { store } from "../store";
 
 const range = ref({
-  start: props.start,
-  end: props.end,
+  start: store.range.start,
+  end: store.range.end,
 });
 
-watch(range, (value) => {
-  router.get(`${location.pathname}?start=${value.start}&end=${value.end}`);
-});
+watch(range, (value) => store.range.update(value.start, value.end));
 </script>

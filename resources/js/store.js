@@ -1,7 +1,19 @@
 import { reactive } from "vue";
-import { router, usePage } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 
 export const store = reactive({
+  range: {
+    start: null,
+    end: null,
+    update(start, end, refresh = true) {
+      this.start = start;
+      this.end = end;
+
+      if (refresh) {
+        router.get(`${location.pathname}?start=${this.start}&end=${this.end}`);
+      }
+    },
+  },
   dashboards: {
     create() {
       router.post(`/${usePage().props.path}/dashboards`);

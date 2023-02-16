@@ -4,7 +4,7 @@
   </Head>
 
   <Header>
-    <DatePicker :start="start" :end="end" />
+    <DatePicker />
   </Header>
 
   <div class="container mx-auto -mt-2 pb-32 lg:flex">
@@ -34,8 +34,10 @@ import Header from "../../Components/Header.vue";
 import Sidebar from "../../Components/Sidebar.vue";
 import DatePicker from "../../Components/DatePicker.vue";
 import Panels from "../../Components/Panels.vue";
+import { store } from "../../store";
 
-defineProps(["dashboard", "dashboards", "start", "end"]);
+const props = defineProps(["dashboard", "dashboards", "start", "end"]);
+store.range.update(props.start, props.end, false);
 
 const showSidebar = ref(false);
 </script>
