@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { router } from "@inertiajs/vue3";
+import { router, usePage } from "@inertiajs/vue3";
 
 export const store = reactive({
   range: {
@@ -16,12 +16,24 @@ export const store = reactive({
   },
   dashboards: {
     create() {
-      router.post(`/${usePage().props.path}/dashboards`);
+      router.post(
+        `/${usePage().props.path}/dashboards`,
+        {},
+        {
+          preserveScroll: true,
+        }
+      );
     },
   },
   panels: {
     create(dashboard) {
-      router.post(`/${usePage().props.path}/dashboards/${dashboard.id}/panels`);
+      router.post(
+        `/${usePage().props.path}/dashboards/${dashboard.id}/panels`,
+        {},
+        {
+          preserveScroll: true,
+        }
+      );
     },
   },
   helpModal: {
