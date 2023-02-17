@@ -1,13 +1,19 @@
 <template>
-  <div ref="canvas"></div>
+  <div>
+    <div
+      class="mb-4 px-4 text-3xl"
+      v-text="Intl.NumberFormat().format(panel.aggregate)"
+    />
+    <div ref="canvas"></div>
+  </div>
 </template>
 
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import ApexCharts from "apexcharts";
-import { store } from "../store";
+import { store } from "../../store";
 
-const props = defineProps(["title", "data"]);
+const props = defineProps(["form", "panel"]);
 
 const canvas = ref(null);
 
@@ -70,8 +76,8 @@ function draw() {
   if (chart.value) {
     chart.value.updateSeries([
       {
-        name: props.title ? props.title : "Rows",
-        data: props.data,
+        name: props.form?.title ? props.form.title : "Rows",
+        data: props.panel.data,
       },
     ]);
   }
@@ -84,7 +90,7 @@ onMounted(() => {
 });
 
 watch(
-  () => [props.data, props.title],
+  () => [props.panel.data, props.form.title],
   () => {
     draw();
   }

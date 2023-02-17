@@ -4,7 +4,7 @@
     @submit.prevent="update"
     class="mb-4 overflow-hidden rounded-lg bg-white p-4 shadow"
   >
-    <div class="mt-2 mb-6 flex px-4 text-gray-600">
+    <div class="mt-2 mb-1 flex px-4 text-gray-600">
       <div class="flex-1">
         <InlineInput
           v-if="editing"
@@ -14,11 +14,6 @@
           class="w-full"
         />
         <div v-else-if="form.name" v-text="form.name" />
-
-        <div
-          class="mt-1 text-3xl"
-          v-text="Intl.NumberFormat().format(panel.aggregate)"
-        />
       </div>
 
       <div class="ml-auto flex items-start pl-4 text-gray-400">
@@ -48,7 +43,7 @@
       </div>
     </div>
 
-    <TrendChart :title="form.name" :data="panel.data" />
+    <TrendChart :form="form" :panel="panel" />
 
     <div
       v-if="panel.error"
@@ -70,7 +65,7 @@ import { ref } from "vue";
 import { useForm, usePage } from "@inertiajs/vue3";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
 import IconButton from "./IconButton.vue";
-import TrendChart from "./TrendChart.vue";
+import TrendChart from "./Panels/TrendChart.vue";
 import Editor from "./Editor.vue";
 import Spinner from "./Spinner.vue";
 import InlineInput from "./InlineInput.vue";
