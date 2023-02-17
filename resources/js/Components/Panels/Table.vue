@@ -3,26 +3,27 @@
     <table class="w-full text-left">
       <thead>
         <tr class="text-blue-400 grayscale-[0.3]">
-          <th class="px-4 py-3 pl-8 text-sm font-normal">ID</th>
-          <th class="px-4 py-3 text-sm font-normal">Name</th>
-          <th class="px-4 py-3 text-sm font-normal">Email</th>
-          <th class="px-4 py-3 pr-8 text-sm font-normal">Created At</th>
+          <th
+            v-for="(column, key) in panel.data[0]"
+            class="px-4 py-3 pl-8 text-sm font-normal"
+            v-text="key"
+          />
         </tr>
       </thead>
       <tbody class="text-gray-500">
-        <tr class="border-t border-gray-100">
-          <td class="px-4 py-3 pl-8">2319</td>
-          <td class="px-4 py-3">Matt</td>
-          <td class="px-4 py-3">matt@example.com</td>
-          <td class="px-4 py-3 pr-8">2023-01-04</td>
-        </tr>
-        <tr class="border-t border-gray-100">
-          <td class="px-4 py-3 pl-8">2318</td>
-          <td class="px-4 py-3">John</td>
-          <td class="px-4 py-3">john@example.com</td>
-          <td class="px-4 py-3 pr-8">2023-01-04</td>
+        <tr v-for="row in panel.data" class="border-t border-gray-100">
+          <td
+            v-for="(column, key, i) in row"
+            class="px-4 py-3"
+            :class="{ 'pl-8': i === 0, 'pr-8': i === row.length }"
+            v-text="column"
+          />
         </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+<script setup>
+const props = defineProps(["form", "panel"]);
+</script>
