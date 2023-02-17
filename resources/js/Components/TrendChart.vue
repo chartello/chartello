@@ -5,6 +5,7 @@
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import ApexCharts from "apexcharts";
+import { store } from "../store";
 
 const props = defineProps(["title", "data"]);
 
@@ -18,6 +19,11 @@ const options = {
     height: 250,
     toolbar: {
       show: false,
+    },
+    events: {
+      zoomed: function (chartContext, { xaxis }) {
+        store.range.update(xaxis.min, xaxis.max);
+      },
     },
   },
   series: [

@@ -3,6 +3,7 @@
 namespace Chartello\Http\Controllers;
 
 use Chartello\Models\Dashboard;
+use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 
 class DashboardsController
@@ -54,13 +55,13 @@ class DashboardsController
     protected function resolveRenage()
     {
         $start = request('start', session('start'));
+        $start = is_numeric($start) ? Carbon::createFromTimestampMs($start) : $start;
+
         $end = request('end', session('end'));
+        $end = is_numeric($end) ? Carbon::createFromTimestampMs($end) : $end;
 
-        if (! $start) {
+        if (! $start || ! $end) {
             $start = now()->endOfDay()->subMonths(3)->format('Y-m-d');
-        }
-
-        if (! $end) {
             $end = now()->endOfDay()->format('Y-m-d');
         }
 
