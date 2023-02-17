@@ -17,14 +17,20 @@
       </div>
 
       <div class="ml-auto flex items-start pl-4 text-gray-400">
-        <IconButton
-          v-if="editing && !form.processing"
-          @click="remove"
-          type="button"
-          class="mr-1 text-red-400 hover:bg-red-100"
-        >
-          <TrashIcon class="h-4 w-4" />
-        </IconButton>
+        <template v-if="editing && !form.processing">
+          <IconButton
+            @click="remove"
+            type="button"
+            class="mr-1 text-red-400 hover:bg-red-100"
+          >
+            <TrashIcon class="h-4 w-4" />
+          </IconButton>
+
+          <select v-model="form.type">
+            <option value="trend-chart">Trend Chart</option>
+            <option value="table">Table</option>
+          </select>
+        </template>
 
         <Spinner v-if="form.processing" />
 
@@ -43,7 +49,7 @@
       </div>
     </div>
 
-    <TrendChart :form="form" :panel="panel" :editing="editing" />
+    <component :is="component" :form="form" :panel="panel" :editing="editing" />
 
     <div
       v-if="panel.error"
@@ -61,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useForm, usePage } from "@inertiajs/vue3";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
 import IconButton from "./IconButton.vue";
@@ -69,6 +75,12 @@ import TrendChart from "./Panels/TrendChart.vue";
 import Editor from "./Editor.vue";
 import Spinner from "./Spinner.vue";
 import InlineInput from "./InlineInput.vue";
+import Table from "./Panels/Table.vue";
+
+const components = {
+  "trend-chart": TrendChart,
+  table: Table,
+};
 
 const props = defineProps(["panel"]);
 
@@ -78,8 +90,11 @@ const editing = ref(false);
 
 const form = useForm({
   name: ref(props.panel.name),
+  type: ref(props.panel.type),
   query: ref(props.panel.settings?.query),
 });
+
+const component = computed(() => components[form.type] ?? TrendChart);
 
 const nameInput = ref(null);
 

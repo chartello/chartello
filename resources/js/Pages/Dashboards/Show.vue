@@ -16,7 +16,7 @@
 
     <Panels
       :dashboard="dashboard"
-      class="flex-1 transition-all duration-500 lg:left-0"
+      class="flex-1 transition-all duration-500 lg:left-0 lg:w-64"
       :class="{ 'left-0': !showSidebar, 'left-[19rem]': showSidebar }"
       @click="showSidebar = false"
     />

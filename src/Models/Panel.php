@@ -2,7 +2,7 @@
 
 namespace Chartello\Models;
 
-use Chartello\Aggregators\TrendAggregator;
+use Chartello\Aggregators\TableAggregator;
 use Chartello\Database\Factories\PanelFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Throwable;
@@ -34,7 +34,7 @@ class Panel extends Model
             return;
         }
 
-        $aggregator = new TrendAggregator($query, $start, $end);
+        $aggregator = new TableAggregator($query, $start, $end);
 
         try {
             $this->data = $aggregator->get();
