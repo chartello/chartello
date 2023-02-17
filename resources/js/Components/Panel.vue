@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <TrendChart :form="form" :panel="panel" />
+    <TrendChart :form="form" :panel="panel" :editing="editing" />
 
     <div
       v-if="panel.error"

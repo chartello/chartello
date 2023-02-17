@@ -2,6 +2,7 @@
   <div>
     <div
       class="mb-4 px-4 text-3xl"
+      :class="{ '-mt-6': !form.name && !editing }"
       v-text="Intl.NumberFormat().format(panel.aggregate)"
     />
     <div ref="canvas"></div>
@@ -13,7 +14,7 @@ import { onMounted, ref, watch } from "vue";
 import ApexCharts from "apexcharts";
 import { store } from "../../store";
 
-const props = defineProps(["form", "panel"]);
+const props = defineProps(["form", "panel", "editing"]);
 
 const canvas = ref(null);
 
