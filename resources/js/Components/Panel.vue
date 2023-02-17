@@ -26,10 +26,19 @@
             <TrashIcon class="h-4 w-4" />
           </IconButton>
 
-          <select v-model="form.type">
-            <option value="trend-chart">Trend Chart</option>
-            <option value="table">Table</option>
-          </select>
+          <div v-for="(value, key) in types">
+            <IconButton
+              type="button"
+              class="mr-1 text-gray-400"
+              :class="{
+                'bg-gray-200': type.label === value.label,
+                'hover:bg-gray-100': type.label !== value.label,
+              }"
+              @click="form.type = key"
+            >
+              <component :is="value.icon" class="h-4 w-4" />
+            </IconButton>
+          </div>
         </template>
 
         <Spinner v-if="form.processing" />
@@ -49,7 +58,12 @@
       </div>
     </div>
 
-    <component :is="component" :form="form" :panel="panel" :editing="editing" />
+    <component
+      :is="type.component"
+      :form="form"
+      :panel="panel"
+      :editing="editing"
+    />
 
     <div
       v-if="panel.error"
@@ -69,7 +83,13 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useForm, usePage } from "@inertiajs/vue3";
-import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
+import {
+  PencilIcon,
+  CheckIcon,
+  TrashIcon,
+  ChartLineIcon,
+  BorderAllIcon,
+} from "vue-tabler-icons";
 import IconButton from "./IconButton.vue";
 import TrendChart from "./Panels/TrendChart.vue";
 import Editor from "./Editor.vue";
@@ -77,9 +97,17 @@ import Spinner from "./Spinner.vue";
 import InlineInput from "./InlineInput.vue";
 import Table from "./Panels/Table.vue";
 
-const components = {
-  "trend-chart": TrendChart,
-  table: Table,
+const types = {
+  "trend-chart": {
+    label: "Trend Chart",
+    component: TrendChart,
+    icon: ChartLineIcon,
+  },
+  table: {
+    label: "Table",
+    component: Table,
+    icon: BorderAllIcon,
+  },
 };
 
 const props = defineProps(["panel"]);
@@ -94,7 +122,7 @@ const form = useForm({
   query: ref(props.panel.settings?.query),
 });
 
-const component = computed(() => components[form.type] ?? TrendChart);
+const type = computed(() => types[form.type] ?? types["trend-chart"]);
 
 const nameInput = ref(null);
 
