@@ -3,6 +3,7 @@
 namespace Chartello\Models;
 
 use Chartello\Aggregators\TableAggregator;
+use Chartello\Aggregators\TrendAggregator;
 use Chartello\Database\Factories\PanelFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Throwable;
@@ -10,6 +11,11 @@ use Throwable;
 class Panel extends Model
 {
     protected $table = 'chartello_panels';
+
+    protected static $aggregatorTypes = [
+        'trend-chart' => TrendAggregator::class,
+        'table' => TableAggregator::class,
+    ];
 
     protected $casts = [
         'settings' => 'array',
@@ -34,7 +40,7 @@ class Panel extends Model
             return;
         }
 
-        $aggregator = new TableAggregator($query, $start, $end);
+        $aggregator = $this->newAggregator($query, $start, $end);
 
         try {
             $this->data = $aggregator->get();
@@ -42,6 +48,13 @@ class Panel extends Model
             $this->data = [];
             $this->error = $exception->getMessage();
         }
+    }
+
+    protected function newAggregator($query, $start, $end)
+    {
+        $type = static::$aggregatorTypes[$this->type] ?? reset(static::$aggregatorTypes);
+
+        return new $type($query, $start, $end);
     }
 
     protected static function newFactory()
