@@ -108,8 +108,6 @@ import Spinner from "./Spinner.vue";
 import InlineInput from "./InlineInput.vue";
 import Table from "./Panels/Table.vue";
 import { store } from "../store";
-import TrendChartQueryGuide from "./Guides/TrendChartQueryGuide.vue";
-import TableQueryGuide from "./Guides/TableQueryGuide.vue";
 
 const types = {
   "trend-chart": {
@@ -118,7 +116,7 @@ const types = {
     icon: ChartLineIcon,
     help: {
       title: "Writing a query for a trend chart",
-      body: TrendChartQueryGuide,
+      body: "TrendChartQueryGuide",
     },
   },
   table: {
@@ -127,7 +125,7 @@ const types = {
     icon: BorderAllIcon,
     help: {
       title: "Writing a query for a table",
-      body: TableQueryGuide,
+      body: "TableQueryGuide",
     },
   },
 };

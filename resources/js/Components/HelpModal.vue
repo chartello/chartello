@@ -36,7 +36,7 @@
               />
 
               <div class="mt-2 text-gray-500">
-                <component :is="store.helpModal.body" />
+                <component :is="guides[store.helpModal.body]" />
               </div>
 
               <div class="mt-4">
@@ -65,4 +65,11 @@ import {
   DialogTitle,
 } from "@headlessui/vue";
 import { store } from "../store";
+import TrendChartQueryGuide from "./Guides/TrendChartQueryGuide.vue";
+import TableQueryGuide from "./Guides/TableQueryGuide.vue";
+
+const guides = {
+  TrendChartQueryGuide: TrendChartQueryGuide,
+  TableQueryGuide: TableQueryGuide,
+};
 </script>
