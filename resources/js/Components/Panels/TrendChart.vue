@@ -74,11 +74,17 @@ const options = {
 };
 
 function draw() {
+  let data = props.panel.data;
+
+  if (!data[0] || !data[0].x) {
+    data = [];
+  }
+
   if (chart.value) {
     chart.value.updateSeries([
       {
         name: props.form?.title ? props.form.title : "Rows",
-        data: props.panel.data,
+        data: data,
       },
     ]);
   }
