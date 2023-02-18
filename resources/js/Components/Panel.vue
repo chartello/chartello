@@ -76,7 +76,17 @@
       v-model="form.query"
       ref="editor"
       class="-mx-4 mt-4 -mb-4 p-8"
-    />
+    >
+      <template v-slot:append>
+        <IconButton
+          @click="help()"
+          type="button"
+          class="text-gray-400 hover:bg-gray-200"
+        >
+          <InfoCircleIcon class="h-4 w-4" />
+        </IconButton>
+      </template>
+    </Editor>
   </form>
 </template>
 
@@ -89,6 +99,7 @@ import {
   TrashIcon,
   ChartLineIcon,
   BorderAllIcon,
+  InfoCircleIcon,
 } from "vue-tabler-icons";
 import IconButton from "./IconButton.vue";
 import TrendChart from "./Panels/TrendChart.vue";
@@ -96,17 +107,28 @@ import Editor from "./Editor.vue";
 import Spinner from "./Spinner.vue";
 import InlineInput from "./InlineInput.vue";
 import Table from "./Panels/Table.vue";
+import { store } from "../store";
+import TrendChartQueryGuide from "./Guides/TrendChartQueryGuide.vue";
+import TableQueryGuide from "./Guides/TableQueryGuide.vue";
 
 const types = {
   "trend-chart": {
     label: "Trend Chart",
     component: TrendChart,
     icon: ChartLineIcon,
+    help: {
+      title: "Writing a query for a trend chart",
+      body: TrendChartQueryGuide,
+    },
   },
   table: {
     label: "Table",
     component: Table,
     icon: BorderAllIcon,
+    help: {
+      title: "Writing a query for a table",
+      body: TableQueryGuide,
+    },
   },
 };
 
@@ -132,6 +154,10 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 if (params.edit === parseInt(props.panel.id)) {
   edit();
+}
+
+function help() {
+  store.helpModal.open(type.value.help.title, type.value.help.body);
 }
 
 function edit() {
