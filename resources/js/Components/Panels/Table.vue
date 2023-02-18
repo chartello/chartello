@@ -1,6 +1,6 @@
 <template>
   <div class="-mx-4 mb-4 w-full overflow-x-auto">
-    <table class="w-full text-left">
+    <table v-if="panel.data.length" class="w-full text-left">
       <thead>
         <tr class="text-blue-400 grayscale-[0.3]">
           <th
@@ -22,6 +22,7 @@
         </tr>
       </tbody>
     </table>
+    <div class="mt-4 px-8 text-gray-400" v-else>No records found.</div>
   </div>
 </template>
 
