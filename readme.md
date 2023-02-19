@@ -104,6 +104,7 @@ SELECT name, email, created_at
 FROM users
 WHERE created_at BETWEEN @start AND @end
 ORDER BY created_at DESC
+LIMIT 5
 ```
 
 ## License

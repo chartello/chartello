@@ -36,6 +36,7 @@
       <span class="hljs-keyword">ORDER</span>
       <span class="hljs-keyword"> BY</span> created_at
       <span class="hljs-keyword">DESC</span><br />
+      <span class="hljs-keyword">LIMIT</span> 5
     </div>
   </div>
 </template>
