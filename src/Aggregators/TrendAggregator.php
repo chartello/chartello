@@ -6,21 +6,14 @@ use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class TrendAggregator
+class TrendAggregator extends BaseAggregator
 {
-    public function __construct(string $query, string $start, string $end)
-    {
-        $this->query = $query;
-        $this->start = $start;
-        $this->end = $end;
-    }
-
     public function get()
     {
         $output = [];
 
-        DB::statement(DB::raw("SET @start := '{$this->start}'"));
-        DB::statement(DB::raw("SET @end := '{$this->end}'"));
+        DB::statement(DB::raw("SET @start := '{$this->start}'")->getValue(DB::connection()->getQueryGrammar()));
+        DB::statement(DB::raw("SET @end := '{$this->end}'")->getValue(DB::connection()->getQueryGrammar()));
         $results = collect(DB::select($this->query));
 
         $this->validate($results);

@@ -10,6 +10,7 @@ class PanelsController
     {
         $panel->update([
             'name' => request('name'),
+            'type' => request('type'),
             'settings' => [
                 'query' => request('query'),
             ],

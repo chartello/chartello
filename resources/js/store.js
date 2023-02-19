@@ -37,8 +37,18 @@ export const store = reactive({
     },
   },
   helpModal: {
+    title: null,
+    body: null,
     isOpen: false,
-    open() {
+    open(title, body) {
+      if (title) {
+        this.title = title;
+      }
+
+      if (body) {
+        this.body = body;
+      }
+
       this.isOpen = true;
     },
     close() {

@@ -16,20 +16,20 @@
 
     <Panels
       :dashboard="dashboard"
-      class="flex-1 transition-all duration-500 lg:left-0"
+      class="flex-1 transition-all duration-500 lg:left-0 lg:w-64"
       :class="{ 'left-0': !showSidebar, 'left-[19rem]': showSidebar }"
       @click="showSidebar = false"
     />
   </div>
 
-  <Modal />
+  <HelpModal />
 </template>
 
 <script setup>
 import "v-calendar/dist/style.css";
 import { Head } from "@inertiajs/vue3";
 import { ref } from "vue";
-import Modal from "../../Components/HelpModal.vue";
+import HelpModal from "../../Components/HelpModal.vue";
 import Header from "../../Components/Header.vue";
 import Sidebar from "../../Components/Sidebar.vue";
 import DatePicker from "../../Components/DatePicker.vue";

@@ -8,13 +8,7 @@
       >Write a query...</span
     >
 
-    <IconButton
-      @click="store.helpModal.open()"
-      type="button"
-      class="text-gray-400 hover:bg-gray-200"
-    >
-      <InfoCircleIcon class="h-4 w-4" />
-    </IconButton>
+    <slot name="append"></slot>
   </div>
 </template>
 
@@ -23,9 +17,6 @@ import "highlight.js/styles/default.css";
 import { onMounted, ref } from "vue";
 import { CodeJar } from "codejar";
 import hljs from "highlight.js";
-import { InfoCircleIcon } from "vue-tabler-icons";
-import { store } from "../store";
-import IconButton from "./IconButton.vue";
 
 const props = defineProps(["modelValue", "autofocus"]);
 
