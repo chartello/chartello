@@ -71,8 +71,10 @@ customize the `path` to the Chartello dashboards and adjust HTTP middleware that
 
 ### Writing Queries
 
-Chartello currently only supports trend charts. A trend chart expects 
-an `x` column with date/datetime values and a numeric `y` column. 
+Chartello currently supports two types of panels: 
+
+#### 1. Trend Charts
+A trend chart expects an `x` column with date/datetime values and a numeric `y` column. 
 
 To populate a trend chart, create a new panel in 
 the UI and enter a query similar to this one:
@@ -87,6 +89,22 @@ ORDER BY x ASC
 
 Including the `BETWEEN @start AND @end` filter ensures that your
 chart reflects the date range selection available in the UI.  
+
+#### 2. Tables
+
+Tables are flexible and accept almost any `SELECT` queries.
+
+If you wish the data in your table to reflect the date selection from the UI, 
+you should include the `BETWEEN @start AND @end` filter in your query.
+
+Here is an example query for populating a table panel:
+
+```sql
+SELECT name, email, created_at
+FROM users
+WHERE created_at BETWEEN @start AND @end
+ORDER BY created_at DESC
+```
 
 ## License
 
