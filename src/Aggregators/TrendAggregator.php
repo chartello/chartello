@@ -12,8 +12,8 @@ class TrendAggregator extends BaseAggregator
     {
         $output = [];
 
-        DB::statement(DB::raw("SET @start := '{$this->start}'"));
-        DB::statement(DB::raw("SET @end := '{$this->end}'"));
+        DB::statement(DB::raw("SET @start := '{$this->start}'")->getValue(DB::connection()->getQueryGrammar()));
+        DB::statement(DB::raw("SET @end := '{$this->end}'")->getValue(DB::connection()->getQueryGrammar()));
         $results = collect(DB::select($this->query));
 
         $this->validate($results);
