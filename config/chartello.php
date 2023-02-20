@@ -8,4 +8,8 @@ return [
         Chartello\Http\Middleware\HandleInertiaRequests::class,
         App\Http\Middleware\ProtectChartello::class,
     ],
+
+    'autocompletion' => [
+        'enabled' => true,
+    ],
 ];

@@ -75,7 +75,7 @@
       v-show="editing"
       v-model="form.query"
       ref="editor"
-      class="-mx-4 mt-4 -mb-4 p-8"
+      class="-mx-4 mt-4 -mb-4 p-4 text-lg"
     >
       <template v-slot:append>
         <IconButton
