@@ -2,8 +2,10 @@
 
 namespace Chartello\Http\Controllers;
 
+use Chartello\Database\Schema;
 use Chartello\Models\Dashboard;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class DashboardsController
@@ -18,11 +20,15 @@ class DashboardsController
             $panel->populate($start, $end);
         }
 
+        $schema = config('chartello.autocompletion.enabled', true) ?
+            new Schema(DB::connection()->getDatabaseName()) : [];
+
         return Inertia::render('Dashboards/Show', [
             'dashboard' => $dashboard,
             'dashboards' => Dashboard::all(),
             'start' => $start,
             'end' => $end,
+            'schema' => $schema,
         ]);
     }
 
