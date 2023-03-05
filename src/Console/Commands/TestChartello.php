@@ -78,7 +78,7 @@ class TestChartello extends Command
 
     protected function runTests()
     {
-        exec('php ./laravel/artisan test', $output);
+        exec('cd laravel && php artisan test', $output);
 
         $this->getOutput()->write(implode("\n", $output));
     }
