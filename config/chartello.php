@@ -5,8 +5,8 @@ return [
 
     'middleware' => [
         'web',
-        Chartello\Http\Middleware\HandleInertiaRequests::class,
         App\Http\Middleware\ProtectChartello::class,
+        Chartello\Http\Middleware\HandleInertiaRequests::class,
     ],
 
     'autocompletion' => [
