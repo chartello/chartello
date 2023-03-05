@@ -3,7 +3,6 @@
 namespace Chartello\Http\Controllers;
 
 use Chartello\Models\Dashboard;
-use Chartello\Models\Panel;
 
 class HomeController
 {
@@ -23,14 +22,18 @@ class HomeController
         $overview = Dashboard::factory()
             ->create(['name' => 'Overview']);
 
-        Panel::factory()->table()->create([
+        $overview->panels()->create([
             'name' => 'Recent Users',
-            'dashboard_id' => $overview->id,
+            'settings' => [
+                'query' => file_get_contents(__DIR__.'/../../../database/examples/table.sql'),
+            ],
         ]);
 
-        Panel::factory()->create([
+        $overview->panels()->create([
             'name' => 'Users',
-            'dashboard_id' => $overview->id,
+            'settings' => [
+                'query' => file_get_contents(__DIR__.'/../../../database/examples/trend-chart.sql'),
+            ],
         ]);
 
         return $overview;

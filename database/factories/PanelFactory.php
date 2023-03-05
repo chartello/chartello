@@ -22,12 +22,7 @@ class PanelFactory extends Factory
         return [
             'name' => ucwords($this->faker->word),
             'settings' => [
-                'query' => 'SELECT COUNT(*) AS y,
-DATE(created_at) AS x
-FROM users
-WHERE created_at BETWEEN @start AND @end
-GROUP BY x
-ORDER BY x ASC',
+                'query' => file_get_contents(__DIR__.'/../examples/trend-chart.sql'),
             ],
         ];
     }
@@ -38,10 +33,7 @@ ORDER BY x ASC',
             return [
                 'type' => 'table',
                 'settings' => [
-                    'query' => 'SELECT id, name, email, created_at
-FROM users
-WHERE created_at BETWEEN @start AND @end
-ORDER BY created_at ASC',
+                    'query' => file_get_contents(__DIR__.'/../examples/table.sql'),
                 ],
             ];
         });
