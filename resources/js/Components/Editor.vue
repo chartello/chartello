@@ -30,7 +30,6 @@ function focus() {
 }
 
 onMounted(() => {
-  console.log(usePage().props);
   editor = new EditorView({
     doc: originalValue,
     extensions: [
