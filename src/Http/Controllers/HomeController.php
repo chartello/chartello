@@ -19,8 +19,7 @@ class HomeController
 
     protected function initiate()
     {
-        $overview = Dashboard::factory()
-            ->create(['name' => 'Overview']);
+        $overview = Dashboard::create(['name' => 'Overview']);
 
         $overview->panels()->create([
             'name' => 'Recent Users',
