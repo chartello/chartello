@@ -17,7 +17,7 @@ export const store = reactive({
   dashboards: {
     create() {
       router.post(
-        `/${usePage().props.path}/dashboards`,
+        `${usePage().props.path}/dashboards`,
         {},
         {
           preserveScroll: true,
@@ -28,7 +28,7 @@ export const store = reactive({
   panels: {
     create(dashboard) {
       router.post(
-        `/${usePage().props.path}/dashboards/${dashboard.id}/panels`,
+        `${usePage().props.path}/dashboards/${dashboard.id}/panels`,
         {},
         {
           preserveScroll: true,

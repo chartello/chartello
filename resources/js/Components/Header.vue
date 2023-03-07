@@ -4,7 +4,7 @@
       class="container mx-auto flex flex-col items-end items-center justify-center px-6 pt-12 pb-12 md:flex-row"
     >
       <Link
-        :href="`/${$page.props.path}`"
+        :href="`${$page.props.path}`"
         class="mb-6 flex items-center justify-center text-xl text-white md:mr-auto md:mb-0"
       >
         <Logo />

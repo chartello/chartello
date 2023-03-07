@@ -150,7 +150,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-if (params.edit === parseInt(props.panel.id)) {
+if (parseInt(params.edit) === parseInt(props.panel.id)) {
   edit();
 }
 
@@ -172,14 +172,14 @@ function edit() {
 }
 
 function update() {
-  form.put(`/${usePage().props.path}/panels/${props.panel.id}`, {
+  form.put(`${usePage().props.path}/panels/${props.panel.id}`, {
     preserveScroll: true,
     onSuccess: () => (editing.value = false),
   });
 }
 
 function remove() {
-  form.delete(`/${usePage().props.path}/panels/${props.panel.id}`, {
+  form.delete(`${usePage().props.path}/panels/${props.panel.id}`, {
     preserveScroll: true,
   });
 }
