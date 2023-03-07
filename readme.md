@@ -107,6 +107,14 @@ ORDER BY created_at DESC
 LIMIT 5
 ```
 
+## Upgrading
+
+When upgrading to a new version of Chartello, you should re-publish its assets:
+
+```
+php artisan vendor:publish --tag=chartello-assets --force
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](license.md) for more information.
