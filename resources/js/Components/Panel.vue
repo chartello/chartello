@@ -172,14 +172,14 @@ function edit() {
 }
 
 function update() {
-  form.put(`/${usePage().props.path}/panels/${props.panel.id}`, {
+  form.put(`${usePage().props.path}/panels/${props.panel.id}`, {
     preserveScroll: true,
     onSuccess: () => (editing.value = false),
   });
 }
 
 function remove() {
-  form.delete(`/${usePage().props.path}/panels/${props.panel.id}`, {
+  form.delete(`${usePage().props.path}/panels/${props.panel.id}`, {
     preserveScroll: true,
   });
 }

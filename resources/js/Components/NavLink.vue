@@ -63,7 +63,11 @@ const props = defineProps(["dashboard"]);
 const editing = ref(false);
 
 const url = computed(() => {
-  return `/${usePage().props.path}/dashboards/${props.dashboard.id}`;
+  return `${usePage().props.path}/dashboards/${props.dashboard.id}`;
+});
+
+const pathname = computed(() => {
+  return new URL(url.value).pathname;
 });
 
 const active = computed(() => {
@@ -74,7 +78,7 @@ const active = computed(() => {
       ? current
       : current.substring(0, current.indexOf("?"));
 
-  return current === url.value;
+  return current === pathname.value;
 });
 
 const form = useForm({
@@ -116,6 +120,6 @@ onMounted(() => {
 });
 
 router.on("start", (event) => {
-  loading.value = event.detail.visit.url.pathname === url.value;
+  loading.value = event.detail.visit.url.pathname === pathname.value;
 });
 </script>
