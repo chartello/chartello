@@ -9,8 +9,6 @@ Chartello provides a simple UI for visualizing your data in your **Laravel 9+** 
     <img width="800" alt="screenshot" src="https://user-images.githubusercontent.com/10030505/219040779-909f08f8-c068-4d30-944a-2f64e92159e2.png">
 </a>
 
-[Demo →](https://demo.chartello.com/)
-
 ## Installation
 
 Add the package to your project via composer:
