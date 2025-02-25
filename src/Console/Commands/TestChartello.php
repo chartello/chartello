@@ -30,11 +30,7 @@ class TestChartello extends Command
 
     protected function generateApplicationKey()
     {
-        $key = 'base64:'.base64_encode(
-            Encrypter::generateKey($this->laravel['config']['app.cipher'])
-        );
-
-        $this->updateEnvVariable('APP_KEY=', "APP_KEY=$key");
+        exec('php ./laravel/artisan key:generate');
     }
 
     protected function configureChartelloRepository()
