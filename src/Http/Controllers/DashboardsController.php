@@ -6,7 +6,6 @@ use Chartello\Database\Schema;
 use Chartello\Models\Dashboard;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
 
 class DashboardsController
 {
@@ -23,12 +22,15 @@ class DashboardsController
         $schema = config('chartello.autocompletion.enabled', true) ?
             new Schema(DB::connection()->getDatabaseName()) : [];
 
-        return Inertia::render('Dashboards/Show', [
-            'dashboard' => $dashboard,
-            'dashboards' => Dashboard::all(),
-            'start' => $start,
-            'end' => $end,
-            'schema' => $schema,
+        return view('chartello::app', [
+            'chartello' => [
+                'path' => url(config('chartello.path')),
+                'dashboard' => $dashboard,
+                'dashboards' => Dashboard::all(),
+                'start' => $start,
+                'end' => $end,
+                'schema' => $schema,
+            ],
         ]);
     }
 
@@ -38,14 +40,16 @@ class DashboardsController
 
         $dashboard->panels()->create();
 
-        return redirect()->route('chartello.dashboards.show', $dashboard);
+        return response()->json([
+            'redirect' => route('chartello.dashboards.show', $dashboard),
+        ]);
     }
 
     public function update(Dashboard $dashboard)
     {
         $dashboard->update(request(['name']));
 
-        return back();
+        return response()->json(['success' => true]);
     }
 
     public function destroy(Dashboard $dashboard)
@@ -54,8 +58,11 @@ class DashboardsController
 
         $dashboard->delete();
 
-        return $previous ? redirect()->route('chartello.dashboards.show', $previous)
-            : redirect()->route('chartello.home');
+        $redirect = $previous
+            ? route('chartello.dashboards.show', $previous)
+            : route('chartello.home');
+
+        return response()->json(['redirect' => $redirect]);
     }
 
     protected function resolveRenage()

@@ -7,11 +7,12 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { inject, onMounted, ref } from "vue";
 import { basicSetup, EditorView } from "codemirror";
 import { sql } from "@codemirror/lang-sql";
 import { placeholder } from "@codemirror/view";
-import { usePage } from "@inertiajs/vue3";
+
+const schema = inject("chartelloSchema", {});
 
 const props = defineProps(["modelValue", "autofocus"]);
 
@@ -36,7 +37,7 @@ onMounted(() => {
       basicSetup,
       placeholder("Write a query..."),
       sql({
-        schema: usePage().props.schema,
+        schema: schema,
       }),
       EditorView.updateListener.of((event) => {
         if (event.docChanged) {

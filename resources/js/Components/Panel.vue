@@ -92,7 +92,7 @@
 
 <script setup>
 import { computed, ref } from "vue";
-import { useForm, usePage } from "@inertiajs/vue3";
+import { useForm } from "../useForm";
 import {
   PencilIcon,
   CheckIcon,
@@ -137,9 +137,9 @@ const editor = ref(null);
 const editing = ref(false);
 
 const form = useForm({
-  name: ref(props.panel.name),
-  type: ref(props.panel.type),
-  query: ref(props.panel.settings?.query),
+  name: props.panel.name,
+  type: props.panel.type,
+  query: props.panel.settings?.query,
 });
 
 const type = computed(() => types[form.type] ?? types["trend-chart"]);
@@ -172,15 +172,19 @@ function edit() {
 }
 
 function update() {
-  form.put(`${usePage().props.path}/panels/${props.panel.id}`, {
-    preserveScroll: true,
-    onSuccess: () => (editing.value = false),
+  form.put(`${store.path}/panels/${props.panel.id}`, {
+    onSuccess: (data) => {
+      if (data.panel) {
+        Object.assign(props.panel, data.panel);
+      }
+      editing.value = false;
+    },
   });
 }
 
 function remove() {
-  form.delete(`${usePage().props.path}/panels/${props.panel.id}`, {
-    preserveScroll: true,
+  form.delete(`${store.path}/panels/${props.panel.id}`, {
+    onSuccess: () => window.location.reload(),
   });
 }
 </script>
