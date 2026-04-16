@@ -12,7 +12,7 @@
       placeholder="Untitled"
       class="w-full flex-1 py-2"
     />
-    <Link
+    <a
       v-else
       class="flex-1 py-2"
       :href="url"
@@ -51,7 +51,8 @@
 </template>
 
 <script setup>
-import { Link, router, useForm, usePage } from "@inertiajs/vue3";
+import { useForm } from "../useForm";
+import { store } from "../store";
 import { PencilIcon, CheckIcon, TrashIcon } from "vue-tabler-icons";
 import { computed, onMounted, ref, watch } from "vue";
 import Spinner from "./Spinner.vue";
@@ -63,7 +64,7 @@ const props = defineProps(["dashboard"]);
 const editing = ref(false);
 
 const url = computed(() => {
-  return `${usePage().props.path}/dashboards/${props.dashboard.id}`;
+  return `${store.path}/dashboards/${props.dashboard.id}`;
 });
 
 const pathname = computed(() => {
@@ -71,18 +72,13 @@ const pathname = computed(() => {
 });
 
 const active = computed(() => {
-  let current = usePage().url;
-
-  current =
-    current.indexOf("?") === -1
-      ? current
-      : current.substring(0, current.indexOf("?"));
+  let current = window.location.pathname;
 
   return current === pathname.value;
 });
 
 const form = useForm({
-  name: ref(props.dashboard.name),
+  name: props.dashboard.name,
 });
 
 const input = ref(null);
@@ -96,15 +92,12 @@ function edit() {
 
 function update() {
   form.put(url.value, {
-    preserveScroll: true,
     onSuccess: () => (editing.value = false),
   });
 }
 
 function remove() {
-  form.delete(url.value, {
-    preserveScroll: true,
-  });
+  form.delete(url.value);
 }
 
 watch(active, (value) => {
@@ -117,9 +110,5 @@ onMounted(() => {
   if (active.value && props.dashboard.name === null) {
     edit();
   }
-});
-
-router.on("start", (event) => {
-  loading.value = event.detail.visit.url.pathname === pathname.value;
 });
 </script>

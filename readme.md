@@ -3,7 +3,7 @@
 [![tests](https://github.com/chartello/chartello/actions/workflows/tests.yml/badge.svg)](https://github.com/chartello/chartello/actions/workflows/tests.yml)
 [![GitHub license](https://img.shields.io/github/license/chartello/chartello)](https://github.com/chartello/chartello/blob/master/LICENSE.md)
 
-Chartello provides a simple UI for visualizing your data in your **Laravel 9+** apps that use **MySQL**.
+Chartello provides a simple UI for visualizing your data in your **Laravel 10+** apps that use **MySQL**.
 
 <a href="https://demo.chartello.com/">
     <img width="800" alt="screenshot" src="https://user-images.githubusercontent.com/10030505/219040779-909f08f8-c068-4d30-944a-2f64e92159e2.png">
@@ -111,6 +111,18 @@ When upgrading to a new version of Chartello, you should re-publish its assets:
 
 ```
 php artisan vendor:publish --tag=chartello-assets --force
+```
+
+### Upgrading from v1.x
+
+Chartello no longer depends on Inertia.js. If you have published the Chartello config file, remove the `HandleInertiaRequests` middleware from `config/chartello.php`:
+
+```diff
+ 'middleware' => [
+     'web',
+     App\Http\Middleware\ProtectChartello::class,
+-    Chartello\Http\Middleware\HandleInertiaRequests::class,
+ ],
 ```
 
 ## License

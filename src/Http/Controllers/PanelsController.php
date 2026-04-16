@@ -16,13 +16,17 @@ class PanelsController
             ],
         ]);
 
-        return back();
+        $start = session('start');
+        $end = session('end');
+        $panel->populate($start, $end);
+
+        return response()->json(['panel' => $panel]);
     }
 
     public function destroy(Panel $panel)
     {
         $panel->delete();
 
-        return back();
+        return response()->json(['success' => true]);
     }
 }

@@ -1,7 +1,9 @@
 import { reactive } from "vue";
-import { router, usePage } from "@inertiajs/vue3";
+import { jsonHeaders } from "./http";
 
 export const store = reactive({
+  path: null,
+
   range: {
     start: null,
     end: null,
@@ -10,30 +12,32 @@ export const store = reactive({
       this.end = end;
 
       if (refresh) {
-        router.get(`${location.pathname}?start=${this.start}&end=${this.end}`);
+        window.location = `${location.pathname}?start=${this.start}&end=${this.end}`;
       }
     },
   },
   dashboards: {
     create() {
-      router.post(
-        `${usePage().props.path}/dashboards`,
-        {},
-        {
-          preserveScroll: true,
-        }
-      );
+      fetch(`${store.path}/dashboards`, {
+        method: "POST",
+        headers: jsonHeaders(),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.redirect) window.location = data.redirect;
+        });
     },
   },
   panels: {
     create(dashboard) {
-      router.post(
-        `${usePage().props.path}/dashboards/${dashboard.id}/panels`,
-        {},
-        {
-          preserveScroll: true,
-        }
-      );
+      fetch(`${store.path}/dashboards/${dashboard.id}/panels`, {
+        method: "POST",
+        headers: jsonHeaders(),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.redirect) window.location = data.redirect;
+        });
     },
   },
   helpModal: {

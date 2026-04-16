@@ -17,7 +17,6 @@
     "@codemirror/lang-sql": "^6.4.0",
     "@codemirror/view": "^6.9.1",
     "@headlessui/vue": "^1.7.10",
-    "@inertiajs/vue3": "^1.0.2",
     "@tailwindcss/forms": "^0.5.3",
     "apexcharts": "^3.37.0",
     "codemirror": "^6.0.1",
