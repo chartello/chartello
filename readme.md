@@ -113,7 +113,7 @@ When upgrading to a new version of Chartello, you should re-publish its assets:
 php artisan vendor:publish --tag=chartello-assets --force
 ```
 
-### Upgrading from v1.x
+### Upgrading from v0.5.x
 
 Chartello no longer depends on Inertia.js. If you have published the Chartello config file, remove the `HandleInertiaRequests` middleware from `config/chartello.php`:
 
